@@ -8,59 +8,86 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <script type="module" src="js/app.js"></script>
+    <script src="https://lf-cdn.coze.cn/obj/unpkg/flow-platform/chat-app-sdk/1.2.0-beta.10/libs/cn/index.js"></script>
 </head>
 
 <body class="font-sans">
-    <!-- 开始页面 -->
-    <div id="start-page" class="start-page">
-        <div class="menu-bar">
+        <div id="main-menu" class="menu-bar">
             <!-- 左上角LOGO -->
-            <img src="./assets/Logo.jpg" alt="碳足迹LOGO" class="logo">
+            <img src="./assets/Logo.jpg" alt="碳足迹LOGO" class="logo h-12">
 
-            <a href="https://tieba.baidu.com/f?kw=%E7%A2%B3%E8%B6%B3%E8%BF%B9%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AE%BA%E5%9D%9B%E4%BD%9C%E4%B8%9A%E7%89%88&ie=utf-8"
-                target="_blank" rel="noopener noreferrer">
-                <button
-                    class="bg-green-700 text-white px-4 py-2 rounded-lg hover:bg-green-800 transition-colors duration-300 flex items-center">
-                    <i class="fa-solid fa-comments mr-2"></i>碳足迹论坛
-                </button>
-            </a>
 
-            <button id="calculation-method-button">计算方式</button>
-            <button id="about-us-button">关于我们</button>
-            <div class="dropdown">
-                <button id="carbon-consultation-button">碳足迹咨询</button>
-                <div class="dropdown-content">
-                    <a href="#" id="carbon-video-button">碳足迹科普视频</a>
-                    <a href="https://baike.baidu.com/item/%E7%A2%B3%E8%B6%B3%E8%BF%B9/9201754" id="carbon-agent-button"
-                        target="_blank"
-                        rel="noopener noreferrer"> <!-- 安全属性 -->
-                        碳足迹科普文章
-                    </a>
+            <div class="menu-buttons">
+
+                <a href="#home" class="home-link">
+                    <button
+                        class="start-btn">
+                        <i class="fa-solid fa-house mr-2"></i>首页
+                    </button>
+                </a>
+
+                <button id="calculate-button-start"
+                    class="start-btn">碳足迹计算</button>
+                <a href="log.html" target="_blank">
+                    <button id="log-button-start"
+                        class="start-btn">操作日志</button>
+                </a>
+
+                <a href="https://tieba.baidu.com/f?kw=%E7%A2%B3%E8%B6%B3%E8%BF%B9%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AE%BA%E5%9D%9B%E4%BD%9C%E4%B8%9A%E7%89%88&ie=utf-8"
+                    target="_blank" rel="noopener noreferrer">
+                    <button
+                        class="start-btn">
+                        <i class="fa-solid fa-comments mr-2"></i>碳足迹论坛
+                    </button>
+                </a>
+
+                <button id="calculation-method-button" class="start-btn">计算方式</button>
+                <button id="about-us-button" class="start-btn">关于我们</button>
+                <div class="dropdown">
+                    <button id="carbon-consultation-button" class="start-btn">碳足迹咨询</button>
+                    <div class="dropdown-content">
+                        <a href="#" id="carbon-video-button">碳足迹科普视频</a>
+                        <a href="https://baike.baidu.com/item/%E7%A2%B3%E8%B6%B3%E8%BF%B9/9201754"
+                            id="carbon-agent-button" target="_blank" rel="noopener noreferrer"> <!-- 安全属性 -->
+                            碳足迹科普文章
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- <button id="calculate-button-start" class="hover:bg-green-700">碳足迹计算</button> -->
-        <!-- <a href="log.html" target="_blank"> -->
-        <!-- <button id="log-button-start" class="hover:bg-green-700">操作日志</button> -->
-        <!-- </a> -->
-        <h1 class="text-4xl font-bold text-white mb-8">碳足迹计算机</h1>
-        <button id="calculate-button-start"
-            class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105">碳足迹计算</button>
-        <a href="log.html" target="_blank">
-            <button id="log-button-start"
-                class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 mt-4">操作日志</button>
-        </a>
-        <!-- <div class="absolute top-4 left-4"> -->
-        <!-- <a href="https://tieba.baidu.com/f?kw=%E7%A2%B3%E8%B6%B3%E8%BF%B9%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AE%BA%E5%9D%9B%E4%BD%9C%E4%B8%9A%E7%89%88&ie=utf-8" -->
-        <!-- target="_blank"> -->
-        <!-- <button -->
-        <!-- class="bg-green-700 text-white px-4 py-2 rounded-lg hover:bg-green-800 transition-colors duration-300 flex items-center"> -->
-        <!-- <i class="fa-solid fa-comments mr-2"></i>碳足迹论坛 -->
-        <!-- </button> -->
-        <!-- </a> -->
+        </div>
     </div>
-    </div>
+
+    <!-- 首页内容 -->
+    <section id="home-content" class="hero-section">
+        <h1 class="hero-title">了解你的碳足迹，共创绿色未来</h1>
+        <p class="hero-subtitle">碳足迹计算机帮助你轻松计算个人、家庭或企业的碳排放量，为环保做出贡献</p>
+    </section>
+    <!-- 碳足迹介绍 -->s
+    <section id = home-intruduction1 class="section page">
+        <h2 class="section-title">什么是碳足迹？</h2>
+        <div class="section-content">
+            <p>碳足迹（Carbon Footprint）是指个人、组织、活动或产品直接或间接产生的温室气体排放量，通常以二氧化碳当量（CO₂e）来表示。它反映了人类活动对气候变化的影响程度。</p>
+            <p>计算碳足迹是了解我们对环境影响的重要一步，通过计算，我们可以发现高排放的生活方式或生产环节，并采取措施减少排放，为应对气候变化贡献力量。</p>
+            <img src="./assets/carbon-footprint-concept.jpg" alt="碳足迹概念图" class="featured-image">
+        </div>
+    </section>
+    <!-- 产品介绍 -->
+    <section id= home-intruduction2 class="section page">
+        <h2 class="section-title">关于碳足迹计算机</h2>
+        <div class="section-content">
+            <p>碳足迹计算机是一款简单易用的工具，帮助用户计算不同场景下的碳排放量：</p>
+            <ul>
+                <li><strong>个人碳足迹</strong>：计算个人日常活动（交通、能源使用、食物消费等）产生的碳排放量</li>
+                <li><strong>家庭碳足迹</strong>：评估家庭整体的碳排放情况，为家庭环保提供指导</li>
+                <li><strong>企业碳足迹</strong>：帮助企业了解生产过程中的碳排放，制定减排策略</li>
+                <li><strong>普通计算</strong>：针对特定活动或物品的快速碳足迹计算</li>
+            </ul>
+            <p>我们的工具基于科学的计算方法，结合了最新的碳排放因子数据，确保计算结果的准确性和参考价值。</p>
+            <img src="./assets/carbon-computer-demo.jpg" alt="碳足迹计算机演示" class="featured-image">
+        </div>
+    </section>
 
     <!-- 计算方式模态框 -->
     <div id="calculation-method-modal" class="modal">
@@ -122,13 +149,13 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>碳足迹科普视频</h2>
-            <iframe id="carbon-video" src="https://player.bilibili.com/player.html?bvid=BV1HPSqYzEmG&page=1"
+            <iframe id="carbon-video" src="https://player.bilibili.com/player.html?bvid=BV1f64y187Jx=1"
                 frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
 
     <!-- 主内容，默认隐藏 -->
-    <div id="main-content" class="hidden container mx-auto p-8">
+    <div id="calculation-content" class="hidden home-content">
         <button id="back-button" class="back-button">返回</button>
         <h2 class="text-3xl font-bold mb-4 text-white">计算你的碳足迹</h2>
         <div class="bg-white p-6 rounded-lg shadow-md">
@@ -354,42 +381,6 @@
                 </div>
             </div>
 
-            <!-- 引入JavaScript入口文件 -->
-            <script type="module" src="js/app.js"></script>
-
-            <!-- 引入扣子SDK -->
-            <script
-                src="https://lf-cdn.coze.cn/obj/unpkg/flow-platform/chat-app-sdk/1.2.0-beta.10/libs/cn/index.js"></script>
-
-            <!-- 初始化聊天组件 -->
-            <script>
-                // 等待页面加载完成后初始化
-                document.addEventListener('DOMContentLoaded', function () {
-                    // 创建聊天组件实例
-                    const chatClient = new CozeWebSDK.WebChatClient({
-                        config: {
-                            bot_id: '7513958127394439179', //Bot ID
-                        },
-                        componentProps: {
-                            title: '碳足迹科普助手',
-                            theme: {
-                                primaryColor: '#00C851', // 主色调：绿色
-                                secondaryColor: '#03A9F4', // 辅助色：蓝色
-                            },
-                            logo: '/assets/Log.jpg', //自定义Logo
-                            welcomeMessage: '你好！我是碳足迹科普助手，有什么可以帮助你的？', //开场语
-                        },
-                        auth: {
-                            type: 'token',
-                            token: '', // 扣子的个人令牌
-                            onRefreshToken: function () {
-                                return ''; // 刷新Token的回调函数
-                            }
-                        }
-                    });
-
-                });
-            </script>
 </body>
 
 </html>

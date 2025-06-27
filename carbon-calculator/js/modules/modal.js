@@ -23,14 +23,18 @@ export class ModalManager {
   static open(modalId) {
     const modal = document.getElementById(modalId);
     if (modal) {
-      modal.style.display = 'block';
-      // 如果是视频模态框，自动播放
-      if (modalId === 'carbon-video-modal') {
-        const video = document.getElementById('carbon-video');
-        if (video) video.play();
-      }
+        modal.style.display = 'block';
+        // 如果是视频模态框，自动播放
+        if (modalId === 'carbon-video-modal') {
+            const video = document.getElementById('carbon-video');
+            if (video) {
+                video.play().catch(error => {
+                    console.error('视频自动播放失败:', error);
+                });
+            }
+        }
     }
-  }
+}
   
   static close(modalId) {
     const modal = document.getElementById(modalId);

@@ -3,6 +3,8 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    font-family: Arial, sans-serif;
+    margin: 0;
 }
 
 /* 模态框样式 */
@@ -25,7 +27,7 @@ body {
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 90%;
     max-width: 600px;
     border-radius: 0.5rem;
     /* 添加圆角 */
@@ -55,13 +57,10 @@ body {
     position: relative;
 }
 
-.start-page button {
+.start-btn {
     margin: 10px;
     padding: 10px 20px;
     font-size: 18px;
-    /* background-color: #228B22; */
-    /* 调整为背景图中的青绿色系 */
-    background-color: #00bfa5; 
     color: white;
     border: none;
     border-radius: 5px;
@@ -69,11 +68,68 @@ body {
     transition: background-color 0.3s ease;
 }
 
-.start-page button:hover {
-    /* background-color: #006400; */
-    /* 加深 hover 颜色 */
+.start-btn:hover {
     background-color: #00897b; 
 }
+
+/* 通用部分样式 */
+.section {
+    padding: 3rem 1rem;
+    background-color: #f9f9f9;
+    margin-bottom: 2rem;
+    border-radius: 10px;
+}
+
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+    text-align: center;
+}
+
+.section-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+
+.hero-section {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./assets/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+}
+
+.hero-title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 800px;
+}
+
+.featured-image {
+    width: 100%;
+    max-width: 800px;
+    border-radius: 10px;
+    margin: 2rem 0;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+
+
 
 /* 返回按钮样式 */
 .back-button {
@@ -132,32 +188,28 @@ body {
 
 /* 菜单栏样式 */
 .menu-bar {
-    position: absolute;
-    top: 20px;
-    right: 20px;
     display: flex;
-    /*background-color: rgba(0, 0, 0, 0.7);  添加半透明背景，增强可读性 */
-    /* 调整为半透明深色，与背景融合更好 */
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
     background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
 }
 
-.menu-bar button {
-    margin-left: 10px;
-    padding: 8px 16px;
-    /* background-color: #228B22; */
-    /* 同开始页面按钮主色 */
-    background-color: #00bfa5; 
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+.menu-buttons {
+    display: flex;
 }
 
-.menu-bar button:hover {
-    /* background-color: #006400; */
-    /* 加深 hover 颜色 */
-    background-color: #00897b;
+.menu-buttons a {
+    text-decoration: none;
+}
+
+.menu-hidden {
+    display: none !important;
 }
 
 /* 下拉菜单样式 */
@@ -169,8 +221,6 @@ body {
 .dropdown-content {
     display: none;
     position: absolute;
-    /* background-color: #f9f9f9; */
-    /* 调整下拉菜单背景色，增加透明度 */
     background-color: rgba(255, 255, 255, 0.9); 
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -213,12 +263,11 @@ iframe {
     justify-content: space-between;
     align-items: center;
     margin-top: 10px;
+    gap: 10px;
 }
 
 /* 按钮样式，统一按钮外观和间距 */
 .calculation-actions button {
-    /* background-color: #228B22; */
-    /* 同开始页面按钮主色 */
     background-color: #00bfa5; 
     color: white;
     border: none;
@@ -230,8 +279,6 @@ iframe {
 }
 
 .calculation-actions button:hover {
-    /* background-color: #006400; */
-     /* 加深 hover 颜色 */
     background-color: #00897b; 
 }
 
@@ -242,12 +289,27 @@ iframe {
     border-radius: 5px;
     font-size: 14px;
     max-width: 50%;
-    /* 限制信息展示区最大宽度 */
-
+    flex-grow: 1;
 }
+
+/* 初始状态：显示首页，隐藏计算界面 */
+#home-content {
+  display: flex;
+}
+#calculation-content {
+  display: none;
 
 /* 隐藏元素类 */
 .hidden {
+    display: none;
+}
+
+/* 页面显示控制类 */
+.page {
+    display: block;
+}
+
+.page-hidden {
     display: none;
 }
 

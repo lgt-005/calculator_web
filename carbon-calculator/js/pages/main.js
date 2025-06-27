@@ -17,7 +17,6 @@ import { formatNumber, getDateTimeString, getInputValue } from '../modules/utils
 export class MainPage {
   constructor() {
     this.initialize();
-    this.bindEvents();
     this.initElectricityModeListener();
     this.initGasModeListener();
   }
@@ -175,15 +174,22 @@ export class MainPage {
   }
 
   showMainContent() {
-    document.getElementById('start-page').style.display = 'none';
-    document.getElementById('main-content').style.display = 'block';
+    document.getElementById('home-content').style.display = 'none';
+    document.getElementById('home-intruduction1').style.display = 'none';
+    document.getElementById('home-intruduction2').style.display = 'none';
+    document.getElementById('calculation-content').style.display = 'block';
     // 默认显示个人计算表单
     this.switchCalculationType('personal');
+    document.querySelector('.menu-bar').style.display = 'none';
+
   }
 
   hideMainContent() {
-    document.getElementById('main-content').style.display = 'none';
-    document.getElementById('start-page').style.display = 'flex';
+    document.getElementById('calculation-content').style.display = 'none';
+    document.getElementById('home-content').style.display = 'flex';
+    document.getElementById('home-intruduction1').style.display = 'block';
+    document.getElementById('home-intruduction2').style.display = 'block';
+    document.querySelector('.menu-bar').style.display = 'flex';
     // 隐藏结果区域
     document.getElementById('result').classList.add('hidden');
   }
